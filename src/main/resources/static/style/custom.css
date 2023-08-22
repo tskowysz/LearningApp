@@ -1,0 +1,55 @@
+html
+{
+    height:100%;
+}
+.jumbotron{
+    background: rgba(0,0,0,0.7)url(/image/12.jpg);
+    background-size: cover;
+    background-blend-mode: darken;
+}
+.math-bg
+{
+ background-image: linear-gradient(rgba(36,55,83,1), rgba(48,111,172,0.8)),
+ url(/image/ruler.jpg);
+}
+.ang-bg
+{
+background-image: linear-gradient(rgba(36,55,83,1), rgba(48,111,172,0.8)),
+ url(/image/england.jpg);
+ background-position: center;
+}
+select{
+    background-color: #325C9A;
+    color: white;
+    font-size: 11px;
+}
+p
+{
+    color: white;
+    font-size: 15px;
+    font-weight: 400;
+    font-variant: small-caps;
+}
+h2
+{
+color: white;
+}
+h4
+{
+color: white;
+}
+label
+{
+color: white;
+font-size: 16px;
+font-weight: 450;
+}
+.p1{
+color: black;
+}
+
+
+
+
+
+

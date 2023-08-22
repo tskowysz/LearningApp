@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pl">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MathsLevel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/css/bootstrap.css" th:href="@{/style/css/bootstrap.css}">
+    <link href="../style/custom.css" th:href="@{/style/custom.css}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nabla&family=News+Cycle:wght@400;700&family=Syne+Mono&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="math-bg">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+    <a class="navbar-brand" href="#">Navbar w/ text</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link align-self-center" href="/"><i class="fa fa-fw fa-home"></i>Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">next element   |</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">next element   |</a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+          next element of navbar
+          </span>
+    </div>
+</nav>
+<div class="container">
+    <h1 class="text-center" style="color:white">Matematyka</h1>
+</div>
+<div class="container">
+    <hr class="mb-5">
+    <div class="row text-center mb-5">
+        <div class="col-6" style="color:white">
+            <form method="post" th:action="@{|/sum/${operations}/${value}/${quantity}|}" class="text-start">
+                <p>Zadanie nr: <span class="badge bg-secondary" th:text="${lp}"></span></p>
+                <hr>
+                <p th:text="${arg1}+${operations}+${arg2}+' = '">
+                <p>
+                    <input name="suma" type="number">
+                    <button type="submit" class="btn btn-success ms-4"
+                            style="font-size: smaller;font-variant: small-caps;">sprawdź
+                    </button>
+            </form>
+        </div>
+        <div class="col-6">
+            <p>Zdobyte punkty</p>
+            <h4 th:text="${correct}"></h4>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-6" style="color:white">
+            <p>Poprawne odpowiedzi</p>
+            <hr>
+            <h6 th:each="good :${goodAnswers}" th:text="${good}"> Good Answer</h6>
+        </div>
+        <div class="col-6" style="color:white">
+            <p>Odpowiedzi błędne</p>
+            <hr>
+            <h6 th:each="bad :${badAnswers}" th:text="${bad}"> Bad Answer</h6>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+

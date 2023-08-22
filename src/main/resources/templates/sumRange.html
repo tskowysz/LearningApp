@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pl">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MathsLevel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/css/bootstrap.css" th:href="@{/style/css/bootstrap.css}">
+    <link href="../style/custom.css" th:href="@{/style/custom.css}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nabla&family=News+Cycle:wght@400;700&family=Syne+Mono&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="math-bg">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+    <a class="navbar-brand" href="#">FilipS_App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-5">
+            <li class="nav-item active">
+                <a class="nav-link align-self-center" href="/"><i class="fa fa-fw fa-home"></i>Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">next element   |</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">next element   |</a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+            next element of navbar
+          </span>
+    </div>
+</nav>
+<div class="container">
+    <h1 class="text-center" style="color:white">Matematyka</h1>
+</div>
+
+<div class="container">
+    <hr class="mb-5" style="color:white">
+    <form method="get" action="/save">
+        <div class="row mb-5">
+            <div class="col-4">
+                <p>Wybierz rodzaj działania matematycznego<p>
+                    <select name="operations" id="operations">
+                        <option value=" + ">DODAWANIE</option>
+                        <option value=" - ">ODEJMOWANIE</option>
+                        <option value=" * ">MNOŻENIE</option>
+                        <option value=" : ">DZIELENIE</option>
+                    </select>
+            </div>
+            <div class="col-4">
+                <p>Podaj zakres liczb:<p>
+                    <select name="value" id="value">
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="25">25</option>
+                        <option value="30">30</option>
+                        <option value="35">35</option>
+                        <option value="40">40</option>
+                        <option value="45">45</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="200">200</option>
+                    </select>
+            </div>
+            <div class="col-4">
+                <p>Ilość zadań<p>
+                <select name="quantity" id="quantity">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="25">25</option>
+                    <option value="30">30</option>
+                </select>
+            </div>
+        </div>
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-light" style="font-size: smaller;font-variant: small-caps;">Zatwierdź</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

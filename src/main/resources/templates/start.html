@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pl">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MathsLevel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/css/bootstrap.css" th:href="@{/style/css/bootstrap.css}">
+    <link href="../style/custom.css" th:href="@{/style/custom.css}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nabla&family=News+Cycle:wght@400;700&family=Syne+Mono&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      .button {
+        background-color: #1c87c9;
+        border: none;
+        color: white;
+        padding: 20px 34px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size:  16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+</style>
+</head>
+<body class="math-bg">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
+    <a class="navbar-brand" href="#">Navbar w/ text</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link align-self-center" href="/"><i class="fa fa-fw fa-home"></i>Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">next element   |</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">next element   |</a>
+            </li>
+        </ul>
+        <span class="navbar-text">
+            next element of navbar
+          </span>
+    </div>
+</nav>
+<div class="container">
+    <h1 class="text-center" style="color:white">Matematyka</h1>
+</div>
+<div class="container">
+    <hr class="mb-5" style="color:white">
+    <form th:action="|/calc/${operations}/${value}/${quantity}|" method="get">
+        <div class="row mb-5">
+            <div class="col-4">
+                <p>Działanie matematyczne:</p>
+                <p th:text="${operations}">+<p>
+            </div>
+            <div class="col-4">
+                <p>Zakres liczb:</p>
+                <p th:text="${value}">Zakres liczb:<p>
+            </div>
+            <div class="col-4">
+                <p>Liczba zadań:</p>
+                <p th:text="${quantity}"> Liczba zadań:<p>
+            </div>
+        </div>
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-success mb-3" style="font-size: smaller;font-variant: small-caps;">Zatwierdź</button>
+            <a href="/math" class="btn btn-danger mb-3" style="font-size: smaller;font-variant: small-caps;">Powrót</a>
+        </div>
+    </form>
+
+</div>
+</body>
+</html>
+
+
+
+
