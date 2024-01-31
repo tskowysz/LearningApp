@@ -49,92 +49,58 @@ public class MathController {
         model.addAttribute("lp", LP);
         model.addAttribute("goodAnswers", goodAnswers);
         model.addAttribute("badAnswers", badAnswers);
-        model.addAttribute("correct",correct);
-        model.addAttribute("incorrect",incorrect);
-        if (operations.equals(" : ")) {
-            quantity--;
-            if (quantity >= 0) {
-                Math dzielenie = mathsCalculations.dzielenie(value);
-                model.addAttribute("arg1", dzielenie.getArg1());
-                model.addAttribute("arg2", dzielenie.getArg2());
-                model.addAttribute("quantity", quantity);
-                return "start1";
-            } else {
-                goodAnswers.clear();
-                badAnswers.clear();
-                LP = 0;
-                correct=0;
-                incorrect=0;
-                return "end";
-            }
+        model.addAttribute("correct", correct);
+        model.addAttribute("incorrect", incorrect);
+        Math calculation;
+
+        switch (operations.trim()) {
+            case ":":
+                calculation = mathsCalculations.dzielenie(value);
+                break;
+            case "-":
+                calculation = mathsCalculations.odejmowanie(value);
+                break;
+            case "*":
+                calculation = mathsCalculations.mnozenie(value);
+                break;
+            case "+":
+                calculation = mathsCalculations.dodawanie(value);
+                break;
+            default:
+                return "error"; // Dodaj obsługę błędu dla niezna
         }
-        if (operations.equals(" - ")) {
-            quantity--;
-            if (quantity >= 0) {
-                Math dzielenie = mathsCalculations.odejmowanie(value);
-                model.addAttribute("arg1", dzielenie.getArg1());
-                model.addAttribute("arg2", dzielenie.getArg2());
-                model.addAttribute("quantity", quantity);
-                return "start1";
-            } else {
-                goodAnswers.clear();
-                badAnswers.clear();
-                LP = 0;
-                correct=0;
-                incorrect=0;
-                return "end";
-            }
+        quantity--;
+        if (quantity >= 0) {
+            model.addAttribute("arg1", calculation.getArg1());
+            model.addAttribute("arg2", calculation.getArg2());
+            model.addAttribute("quantity", quantity);
+            return "start1";
+        } else {
+            clearAndReset();
+            return "end";
         }
-        if (operations.equals(" * ")) {
-            quantity--;
-            if (quantity >= 0) {
-                Math dzielenie = mathsCalculations.mnozenie(value);
-                model.addAttribute("arg1", dzielenie.getArg1());
-                model.addAttribute("arg2", dzielenie.getArg2());
-                model.addAttribute("quantity", quantity);
-                return "start1";
-            } else {
-                goodAnswers.clear();
-                badAnswers.clear();
-                LP = 0;
-                correct=0;
-                incorrect=0;
-                return "end";
-            }
-        }
-        if (operations.equals(" + ")) {
-            quantity--;
-            if (quantity >= 0) {
-                Math dzielenie = mathsCalculations.dodawanie(value);
-                model.addAttribute("arg1", dzielenie.getArg1());
-                model.addAttribute("arg2", dzielenie.getArg2());
-                model.addAttribute("quantity", quantity);
-                return "start1";
-            } else {
-                goodAnswers.clear();
-                badAnswers.clear();
-                LP = 0;
-                correct=0;
-                incorrect=0;
-                return "end";
-            }
-        }
-        return "";
     }
 
     @PostMapping("/sum/{operations}/{value}/{quantity}")
     public String mathSum(@RequestParam int suma, @PathVariable String operations, @PathVariable String value, @PathVariable Integer quantity, Model model) {
-
-        if (suma == mathsCalculations.getMath().getArg3()) {
-            String ok = mathsCalculations.getMath().getArg1() + operations + mathsCalculations.getMath().getArg2() + " = " + suma;
+        Math calculation = mathsCalculations.getMath();
+        if (suma == calculation.getArg3()) {
+            String ok = calculation.getArg1() + operations + calculation.getArg2() + " = " + suma;
             goodAnswers.add(ok);
             correct++;
         } else {
-            String bad = mathsCalculations.getMath().getArg1() + operations + mathsCalculations.getMath().getArg2() + " = " + suma;
+            String bad = calculation.getArg1() + operations + calculation.getArg2() + " = " + suma;
             badAnswers.add(bad);
             incorrect++;
         }
         return "redirect:/calc/{operations}/{value}/{quantity}";
     }
 
+    private void clearAndReset() {
+        goodAnswers.clear();
+        badAnswers.clear();
+        LP = 0;
+        correct = 0;
+        incorrect = 0;
+    }
 }
